@@ -6,8 +6,7 @@ if number >= 0:
 else:
     last_digit = ((number * -1) % 10) * -1
 
-    msg = ("Last digit of {":d"} is {":d"} and is".format(number, last_digit))
-
+    msg = "Last digit of %d is %d and is" % (number, last_digit)
     if last_digit == 0:
         print(msg, "0")
     elif last_digit > 5:

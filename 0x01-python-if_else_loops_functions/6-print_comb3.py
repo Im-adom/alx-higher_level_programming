@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-number = 0
-while number <= 89:
-    if number % 10 == 0:
-        number += 1 + number // 10
-        print("{:02d}".format(number), end='\n' if number == 89 else ", ")
-        number += 1
+for dig1 in range(0, 10):
+    for dig2 in range(dig1 + 1, 10):
+        if dig1 == 8 and dig2 == 9:
+            print("{}{}".format(dig1, dig2))
+        else:
+            print("{}{}".format(dig1, dig2), end=", ")

@@ -1,16 +1,17 @@
 #!/usr/bin/python3
+
+from sys import argv
+
 if __name__ == "__main__":
-    import sys
 
-    c_arg = sys.argv
-    size = len(c_arg) - 1
+    numb = len(argv) - 1
 
-    if size > 1:
-        print("{} arguments:".format(size))
-        for a in range(1, size + 1):
-            print("{}: {}".format(a, c_arg[a]))
-        elif size == 0:
-            print("{} arguments.".format(size))
-        else:
-            print("{} argument:".format(size))
-            print("{}: {}".format(size, c_arg[1]))
+    if numb == 2:
+        print("0 arguments.")
+    elif numb == 1:
+        print("1 argument:")
+    else:
+        print("{} arguments:".format(numb))
+
+    for g, r in enumerate(argv[1:]):
+        print("{}: {}".format(g + 1, r))

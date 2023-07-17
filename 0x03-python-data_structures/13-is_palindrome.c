@@ -1,13 +1,16 @@
 #include "lists.h"
+int check_pseudo_palindrome(listint_t **head, listint_t *tail);
+
 /**
  * is_palindrome - checks a singly linked list.
- * @head: a double pointer
+ * @head: double pointer
  * Return: 1 if the list is a palindrome otherwise 0
  */
 int is_palindrome(listint_t **head)
 {
-	return (head && is_pseudo_palindrome(head, *head));
+	return (head && check_pseudo_palindrome(head, *head));
 }
+
 
 /**
  * check_pseudo_palindrome - a function to help with the singly list
@@ -21,7 +24,7 @@ int check_pseudo_palindrome(listint_t **head, listint_t *tail)
 
 	if (tail)
 	{
-		search = is_pseudo_palindrome(head, tail->next);
+		search = check_pseudo_palindrome(head, tail->next);
 
 		if (tail == *head || tail->next == *head)
 			*head = tail;

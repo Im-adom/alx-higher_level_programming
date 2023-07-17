@@ -1,61 +1,34 @@
 #include "lists.h"
 /**
- * reverse_listint - This function reverses a singly-linked list
- * @head: pointer to starting node
- * Return: pointer to the first node in new list
- */
-listint_t *reverse_listint(listint_t **head)
-{
-	listint_t *node = *head, *next, *init = NULL;
-
-	while (node)
-	{
-		next = node->next;
-		node->next = init;
-		node = next;
-	}
-	*head = init;
-	return (*head);
-}
-/**
- * is_palindrome - This function checks if a linked list is a
- * palindrome.
- * @head: pointer ti the head of the linked list.
- * Return: 0 if the list is not a palindrome, otherwise
- * return -1
+ * is_palindrome - checks a singly linked list.
+ * @head: a double pointer
+ * Return: 1 if the list is a palindrome otherwise 0
  */
 int is_palindrome(listint_t **head)
 {
-	listint *ptr_rev, *temp, *gee;
-	size_t size = 0, a;
+	return (head && is_pseudo_palindrome(head, *head));
+}
 
-	if (*head == NULL || (*head)->next == NULL)
-		return (1);
+/**
+ * check_pseudo_palindrome - a function to help with the singly list
+ * @head: pointer
+ * @tail: pointer
+ * Return:..
+ */
+int check_pseudo_palindrome(listint_t **head, listint_t *tail)
+{
+	int search = 1;
 
-	temp = *head;
-	while (temp)
+	if (tail)
 	{
-		size++;
-		temp = temp->next;
-	}
-	temp = *head;
-	for (a = 0; a < (size / 2) - 1; a++)
-		temp = temp->next;
-	if ((size % 2) == 0 && temp->n != temp->next->n)
-		return (0);
-	temp = temp->next->next;
-	ptr_rev = reverse_listint(&temp);
-	gee = ptr_rev;
+		search = is_pseudo_palindrome(head, tail->next);
 
-	temp = *head;
-	while (ptr_rev)
-	{
-		if (temp->n != ptr_rev->n)
-			return (0);
-		temp = temp->next;
-		ptr_rev = ptr_rev->next;
+		if (tail == *head || tail->next == *head)
+			*head = tail;
+		else if (search && (*head)->n == tail->n)
+			*head = (*head)->next;
+		else
+			search = 0;
 	}
-	reverse_listint(&gee);
-
-	return (1);
+	return (search);
 }

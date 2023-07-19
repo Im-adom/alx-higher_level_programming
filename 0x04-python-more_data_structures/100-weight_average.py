@@ -6,7 +6,7 @@ def weight_average(my_list=[]):
     up = 0
     down = 0
 
-    for tup in my_lisy:
+    for tup in my_list:
         up += tup[0] * tup[1]
         down += tup[1]
 

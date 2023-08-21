@@ -113,7 +113,7 @@ class Base:
         t.pensize(3)
         shapes = list_rectangles + list_squares
         for shape in shapes:
-            t.pencolor(cl[random.randint(0, 2)])
+            t.pencolor(col[random.randint(0, 2)])
             t.up()
             t.goto(shape.x, shape.y)
             t.down()

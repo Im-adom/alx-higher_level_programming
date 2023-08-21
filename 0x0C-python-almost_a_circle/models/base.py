@@ -2,6 +2,7 @@
 """Defines a class called Base."""
 import json
 import csv
+import random
 import turtle
 
 
